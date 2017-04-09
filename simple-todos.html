@@ -1,0 +1,146 @@
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+        <meta charset="utf-8">
+    <title>Todo List</title>
+    <!--<script src="http://maps.googleapis.com/maps/api/js">
+        </script>-->
+    <script type="text/javascript"
+       <!--  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDG1mocxosoC9cq-ucFO3vdZCcUxyKa6B4"> -->
+       
+        </script>
+    <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>jQuery UI Tabs - Default functionality</title>
+            <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+                <link rel="stylesheet" href="/resources/demos/style.css">
+                    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+                    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+                    <script>
+                        $( function() {
+                          $( "#tabs" ).tabs();
+                          } );
+                        </script>
+</head>
+
+<body>
+    
+    <header>
+        <h1>GeoSpatial Query Application</h1>
+        
+        <!--    <br> long: <input type="text" name="long" placeholder="Longtitude"> <br>
+         Lat:  <input type="text" name="lat" placeholder="Latitude">
+         
+         <form class="new-task">
+         <input type="text" name="coords1" placeholder="Latitude">
+         <input type="text" name="coords2" placeholder="Latitude">
+         </form>
+         -->
+    </header>
+<table valign="top" >
+    <tr ><td>
+<div id="tabs">
+    <ul>
+     <li><a href="#tabs-1">Operations</a></li>
+        
+    </ul>
+    <div id="tabs-1">
+        
+            <table valign="top" >
+            <tr ><td >
+               
+                {{>PQform}}
+                
+            </td>
+           </tr>
+            
+           
+                <tr valign="top"><td >
+                    
+                    {{>WQform}}
+                    
+                </td>
+                </tr>
+           
+           
+                <tr valign="top"><td >
+                    
+                    {{>SJQform}}
+                    
+                </td>
+                </tr>
+            </table>
+            
+
+
+    </div>
+
+</div>
+    
+    </td>
+    <td>
+
+{{>myGooglemap}}
+<ul>
+    {{#each tasks}}
+    <!--{{> task}}-->
+    {{>task}}
+    {{/each}}
+</ul>
+
+</td></tr>
+</table>
+
+
+
+<script>
+    var c = document.getElementById("myCanvas");
+    </script>
+
+</body>
+
+<template name="task">
+    <li>{{coords}}</li>
+    <li>{{Lat}}, {{Lng}}</li>
+</template>
+
+ <template name="myCanvas">
+    <canvas id="myCanvas" width="200" align="center" height="200" style="border:1px solid #fff000;" >
+    </canvas>
+</template>
+
+<template name="myGooglemap">
+    <div id="googleMap" valign="top" style="width:850px;height:568px;"></div>
+</template>
+
+<template name="PQform">
+<div style="width:350px;height:150px;background-color:#eff5f5;border-style: solid;border-color: #eff5f5; border-width: 5px; ">
+    <p><span style="color:#5c5c3d;">Return all areas that intersect with a given point. The areas will be shown in </span> <span style="color:red;">red. </span> </p>
+    <input type="text" name="coords1" id="coords1" placeholder="Latitude">
+    <input type="text" name="coords2" id="coords2" placeholder="Longitude">
+ <br><br>
+<button class="PointQbutton" style="width:120px;height:25px;">Point Query</button> <br>
+</div>
+</template>
+<template name="WQform">
+<div style="width:350px;height:200px;background-color:#eff5f5;border-style: solid;border-color: #eff5f5; border-width: 5px; ">
+        <p><span style="color:#5c5c3d;">Return all areas that intersect with a given area. The areas will be shown in  </span> <span style="color:blue;"> blue.</span> </p>
+    <input type="text" name="coords3" id="coords3" placeholder="Latitude">
+    <input type="text" name="coords4" id="coords4" placeholder="Longitude">
+    <input type="text" name="coords5" id="coords5" placeholder="Latitude">
+    <input type="text" name="coords6" id="coords6" placeholder="Longitude">
+<br><br>
+<button class="WindowQbutton" style="width:120px;height:25px;">Window Query</button> <br>
+</div>
+
+</template>
+<template name="SJQform">
+    
+<div style="width:350px;height:100px;background-color:#eff5f5;border-style: solid;border-color: #eff5f5; border-width: 5px; ">
+       <p><span style="color:#5c5c3d;">Return the total intersection between water and land areas. The areas will be shown in  </span> <span style="color:#00cc00;">green. </span></p>
+<button class="SJQbutton" style="width:120px;height:25px;">Spatial Join</button> <br>
+</div>
+
+
+</template>
+
